@@ -34,7 +34,6 @@ const initalState = [
 // reducer : 가공하는 공장...9ㅅ9
 // 값 넘어온건 action.@ 으로...
 const todoReducer = (state = initalState, action) => {
-    console.log('모듈 state : ', state);
     switch (action.type) {
         case ADD:
             return [

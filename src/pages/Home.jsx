@@ -35,7 +35,7 @@ const Header = styled(DivFlex.withComponent('header'))`
     height: 100px;
 `;
 
-const Nav = styled(DivFlex.withComponent('nav'))`
+const InputDiv = styled(DivFlex)`
     flex-direction: row;
     justify-content: space-between;
 
@@ -80,10 +80,13 @@ function Home() {
     // 추가 버튼 클릭시
     const addTodoList = () => {
         // 여기안에 dispatch + 모듈에서 export한 action 함수 + 넘길 값들
-        dispatch(addTodo(title, content));
-        // input 리셋
-        setTitle('');
-        setContent('');
+        // input 비어있으면 버튼 안눌리게
+        if (title != '' && content != '') {
+            dispatch(addTodo(title, content));
+            // input 리셋
+            setTitle('');
+            setContent('');
+        }
     };
 
     return (
@@ -93,7 +96,8 @@ function Home() {
                 <Header>
                     <span>jeong todolist</span>
                 </Header>
-                <Nav>
+
+                <InputDiv>
                     <div>
                         <label>제목</label>
                         <Input value={title} onChange={titleChange} />
@@ -101,7 +105,9 @@ function Home() {
                         <Input value={content} onChange={contentChange} />
                     </div>
                     <Button onClick={addTodoList} name={'추가'} />
-                </Nav>
+                </InputDiv>
+
+                {/* 얘네들 빼기 */}
                 <Section>
                     <label>Working</label>
                     <WorkingArea>
