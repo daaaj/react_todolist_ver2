@@ -62,18 +62,6 @@ const WorkingArea = styled(DivGrid)`
 */
 
 function Home() {
-    // todolist => 이런것도 모듈에서..
-    /*
-    const [todoList, setTodoList] = useState([
-        // {
-        //     id: 1,
-        //     title: '까꿍',
-        //     content: '하하하',
-        //     isDone: false,
-        // },
-    ]);
-    */
-
     // input 값
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -83,17 +71,6 @@ function Home() {
     const contentChange = (e) => {
         setContent(e.target.value);
     };
-
-    // add button => 이런건 모듈에서...
-    // const addTodoList = () => {
-    //     const newTodo = {
-    //         id: Date.now(),
-    //         title,
-    //         content,
-    //         isDone: false,
-    //     };
-    //     setTodoList([...todoList, newTodo]);
-    // };
 
     // 1. useSelector 먼저
     const todoReducer = useSelector((state) => state.todoReducer);
@@ -123,7 +100,6 @@ function Home() {
                         <label>내용</label>
                         <Input value={content} onChange={contentChange} />
                     </div>
-                    {/* 버튼 클릭시 title, content list에 추가 */}
                     <Button onClick={addTodoList} name={'추가'} />
                 </Nav>
                 <Section>

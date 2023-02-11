@@ -14,6 +14,12 @@ export const addTodo = (title, content) => {
         content,
     };
 };
+export const deleteTodo = (id) => {
+    return {
+        type: DELETE,
+        id,
+    };
+};
 
 // list 초기값 줘보자
 const initalState = [
@@ -24,10 +30,11 @@ const initalState = [
         isDone: false,
     },
 ];
-
+//console.log(`list.id : ${list.id} / action.id : ${action.id}`);
 // reducer : 가공하는 공장...9ㅅ9
 // 값 넘어온건 action.@ 으로...
 const todoReducer = (state = initalState, action) => {
+    console.log('모듈 state : ', state);
     switch (action.type) {
         case ADD:
             return [
@@ -39,6 +46,10 @@ const todoReducer = (state = initalState, action) => {
                     isDone: false,
                 },
             ];
+        case DELETE:
+            // 와우...() => {} 이렇게 쓰면 {} 안에 return 적어줘야 함..
+            // 미쳤다리...겁나 오류찾느라 헤맸네...
+            return state.filter((list) => list.id != parseInt(action.id));
         default:
             return state;
     }
