@@ -13,9 +13,7 @@ const TodoBox = styled(S.DivFlex)`
 `;
 
 function TodoList({ list }) {
-    // 삭제하기, 완료 버튼은 여기 있으니깐 여기서..??
-
-    // 1. selector 안해도 되는지...?
+    // 1. selector 안해도 되는지...? ㅇㅇ
     // 2. dispatch
     const dispatch = useDispatch();
 
@@ -33,7 +31,7 @@ function TodoList({ list }) {
     return (
         // 1. 상세보기 클릭 시 상세 페이지 이동 => Link 사용 (백틱 사용!!)
         // 2. 해당 id 조회해서 todo 가지고 오기 => 상세페이지에서 useParam 이용
-        // 3. 이전으로 버튼 클릭시 home page로 이동
+        // 3. 이전으로 버튼 클릭시 home page로 이동 => Link 사용
         <TodoBox>
             <Link to={`/${list.id}`}>
                 <span>상세보기</span>

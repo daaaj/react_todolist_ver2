@@ -6,8 +6,6 @@ const ADD = 'home/ADD';
 const DELETE = 'home/DELETE';
 const DONE = 'home/DONE';
 const CANCLE = 'home/CANCLE';
-// TodoPage
-const BACK = 'todo/BACK';
 
 // creator
 export const addTodo = (title, content) => {
@@ -32,12 +30,6 @@ export const doneTodo = (id) => {
 export const cancleTodo = (id) => {
     return {
         type: CANCLE,
-        id,
-    };
-};
-export const backPage = (id) => {
-    return {
-        type: BACK,
         id,
     };
 };
@@ -74,9 +66,6 @@ const todoReducer = (state = initalState, action) => {
             return state.map((list) => (list.id === action.id ? { ...list, isDone: true } : list));
         case CANCLE:
             return state.map((list) => (list.id === action.id ? { ...list, isDone: false } : list));
-        case BACK:
-            // param 변경해줘야해
-            return;
         default:
             return state;
     }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import ContentArea from '../components/ContentArea';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/modules/todoModule';
 import * as S from '../components/styled/ShareStyle';
 
@@ -42,7 +42,7 @@ function Home() {
     };
 
     // 1. useSelector 먼저
-    const todoReducer = useSelector((state) => state.todoReducer);
+    // const todoReducer = useSelector((state) => state.todoReducer);
     // 2. dispatch : 값 전달하는 따까리..
     const dispatch = useDispatch();
 
@@ -76,7 +76,7 @@ function Home() {
                     <Button onClick={addTodoList} name={'추가'} />
                 </InputArea>
 
-                <ContentArea todoReducer={todoReducer}></ContentArea>
+                <ContentArea></ContentArea>
             </Container>
         </>
     );
