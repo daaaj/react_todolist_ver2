@@ -3,16 +3,12 @@ import Button from './Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../redux/modules/todoModule';
+import * as S from '../components/styled/ShareStyle';
 
-const TodoBox = styled.div`
+const TodoBox = styled(S.DivFlex)`
     width: 200px;
     height: 200px;
     background-color: lightgreen;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 `;
 const btnNames = ['삭제하기', '완료'];
 

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import TodoList from '../components/TodoList';
+import ContentArea from '../components/ContentArea';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../redux/modules/todoModule';
+import * as S from '../components/styled/ShareStyle';
 
 // styled components
 // 전역 global
@@ -14,46 +15,21 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `;
-// 재사용하기
-const DivFlex = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-`;
-
-const Container = styled(DivFlex)`
+const Container = styled(S.DivFlex)`
     max-width: 1200px;
     min-width: 800px;
     margin: 0px auto;
 `;
-
-const Header = styled(DivFlex.withComponent('header'))`
+const Header = styled(S.DivFlex.withComponent('header'))`
     background-color: pink;
     height: 100px;
 `;
-
-const InputDiv = styled(DivFlex)`
+const InputArea = styled(S.DivFlex)`
     flex-direction: row;
     justify-content: space-between;
 
     height: 100px;
     background-color: lightgray;
-`;
-
-const Section = styled(DivFlex.withComponent('section'))`
-    background-color: aqua;
-    display: inline;
-`;
-
-const DivGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-`;
-const WorkingArea = styled(DivGrid)`
-    background-color: lightcoral;
 `;
 
 /*
@@ -97,7 +73,7 @@ function Home() {
                     <span>jeong todolist</span>
                 </Header>
 
-                <InputDiv>
+                <InputArea>
                     <div>
                         <label>제목</label>
                         <Input value={title} onChange={titleChange} />
@@ -105,21 +81,9 @@ function Home() {
                         <Input value={content} onChange={contentChange} />
                     </div>
                     <Button onClick={addTodoList} name={'추가'} />
-                </InputDiv>
+                </InputArea>
 
-                {/* 얘네들 빼기 */}
-                <Section>
-                    <label>Working</label>
-                    <WorkingArea>
-                        {todoReducer.map((list) => {
-                            return <TodoList key={list.id} list={list} />;
-                        })}
-                    </WorkingArea>
-                    <label>Done</label>
-                    <div>
-                        <div>카드</div>
-                    </div>
-                </Section>
+                <ContentArea todoReducer={todoReducer}></ContentArea>
             </Container>
         </>
     );
