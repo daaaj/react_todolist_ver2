@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../redux/modules/todoModule';
+import { deleteTodo, doneTodo } from '../redux/modules/todoModule';
 import * as S from '../components/styled/ShareStyle';
 
 const TodoBox = styled(S.DivFlex)`
@@ -23,7 +23,7 @@ function TodoList({ list }) {
         dispatch(deleteTodo(list.id));
     };
     const doneTodoList = () => {
-        //console.log('완료해');
+        dispatch(doneTodo(list.id));
     };
     return (
         <TodoBox>

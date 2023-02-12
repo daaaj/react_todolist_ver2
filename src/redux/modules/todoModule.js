@@ -20,6 +20,12 @@ export const deleteTodo = (id) => {
         id,
     };
 };
+export const doneTodo = (id) => {
+    return {
+        type: DONE,
+        id,
+    };
+};
 
 // list 초기값 줘보자
 const initalState = [
@@ -48,7 +54,9 @@ const todoReducer = (state = initalState, action) => {
         case DELETE:
             // 와우...() => {} 이렇게 쓰면 {} 안에 return 적어줘야 함..
             // 미쳤다리...겁나 오류찾느라 헤맸네...
-            return state.filter((list) => list.id != parseInt(action.id));
+            return state.filter((list) => list.id !== action.id);
+        case DONE:
+            return state.map((list) => (list.id === action.id ? { ...list, isDone: true } : list));
         default:
             return state;
     }

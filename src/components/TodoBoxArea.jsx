@@ -17,15 +17,34 @@ const WorkingArea = styled.div`
 function TodoBoxArea() {
     // 리듀서 여기서 새로 만들기??
     // 아니면 쓰이는 곳에서는 새로 만드는 건가요?
+    // 리턴값 확인은 리듀서 불러온곳에서 하기!!!
     const todoReducer = useSelector((state) => state.todoReducer);
+
+    const labelText = ['Working..', 'Done..'];
     return (
         <Label_box_area>
-            <label>Working</label>
-            <WorkingArea>
-                {todoReducer.map((list) => {
-                    return <TodoList key={list.id} list={list} />;
-                })}
-            </WorkingArea>
+            {labelText.map((text, i) => (
+                <div key={i}>
+                    <label>{text}</label>
+                    {i === 0 ? (
+                        <WorkingArea>
+                            {todoReducer
+                                .filter((list) => list.isDone === false)
+                                .map((list) => {
+                                    return <TodoList key={list.id} list={list} />;
+                                })}
+                        </WorkingArea>
+                    ) : (
+                        <WorkingArea>
+                            {todoReducer
+                                .filter((list) => list.isDone === true)
+                                .map((list) => {
+                                    return <TodoList key={list.id} list={list} />;
+                                })}
+                        </WorkingArea>
+                    )}
+                </div>
+            ))}
         </Label_box_area>
     );
 }

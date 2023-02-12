@@ -13,10 +13,6 @@ function ContentArea({ todoReducer }) {
     return (
         <Section>
             <TodoBoxArea></TodoBoxArea>
-            <label>Done</label>
-            <div>
-                <div>카드</div>
-            </div>
         </Section>
     );
 }
