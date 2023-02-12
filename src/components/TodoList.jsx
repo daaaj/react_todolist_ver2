@@ -7,11 +7,44 @@ import * as S from '../components/styled/ShareStyle';
 import { Link } from 'react-router-dom';
 
 const TodoBox = styled(S.DivFlex)`
-    width: 200px;
-    height: 200px;
-    background-color: lightgreen;
+    max-width: 300px;
+    background-color: #bad1c2;
+    /* color: white; */
+    border-radius: 30px;
+    font-size: 1.3rem;
+    // 줄바꿈...까먹지말자
+    word-break: break-all;
+
+    /* Link 는 a로 수정해주기~ */
+    > a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
 `;
 
+const Title = styled.span`
+    font-size: 1.9rem;
+    margin: 20px;
+`;
+
+const Content = styled.p`
+    font-size: 1.1rem;
+    margin: 0px 20px 50px 20px;
+`;
+const BtnArea = styled(S.DivFlex)`
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    > button {
+        width: 100px;
+        height: 40px;
+        font-size: 1rem;
+        margin: 5px;
+        margin-bottom: 40px;
+    }
+`;
 function TodoList({ list }) {
     // 1. selector 안해도 되는지...? ㅇㅇ
     // 2. dispatch
@@ -36,21 +69,21 @@ function TodoList({ list }) {
             <Link to={`/${list.id}`}>
                 <span>상세보기</span>
             </Link>
-            <span>{list.title}</span>
-            <p>{list.content}</p>
-            <div>
+            <Title>{list.title}</Title>
+            <Content>{list.content}</Content>
+            <BtnArea>
                 {list.isDone === false
                     ? btnNames
                           .filter((item) => item !== '취소')
                           .map((item, i) => {
-                              return <Button key={i} name={item} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
+                              return <Button key={i} name={item} color={item === '삭제하기' ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
                           })
                     : btnNames
                           .filter((item) => item !== '완료')
                           .map((item, i) => {
-                              return <Button key={i} name={item} onClick={i === 0 ? deleteTodoList : cancleTodoLIst} />;
+                              return <Button key={i} name={item} color={item === '삭제하기' ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : cancleTodoLIst} />;
                           })}
-            </div>
+            </BtnArea>
         </TodoBox>
     );
 }
