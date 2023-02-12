@@ -26,6 +26,12 @@ export const doneTodo = (id) => {
         id,
     };
 };
+export const cancleTodo = (id) => {
+    return {
+        type: CANCLE,
+        id,
+    };
+};
 
 // list 초기값 줘보자
 const initalState = [
@@ -57,6 +63,8 @@ const todoReducer = (state = initalState, action) => {
             return state.filter((list) => list.id !== action.id);
         case DONE:
             return state.map((list) => (list.id === action.id ? { ...list, isDone: true } : list));
+        case CANCLE:
+            return state.map((list) => (list.id === action.id ? { ...list, isDone: false } : list));
         default:
             return state;
     }

@@ -6,7 +6,6 @@ import ContentArea from '../components/ContentArea';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../redux/modules/todoModule';
 import * as S from '../components/styled/ShareStyle';
-
 // styled components
 // 전역 global
 const GlobalStyle = createGlobalStyle`
@@ -15,15 +14,18 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `;
+
 const Container = styled(S.DivFlex)`
     max-width: 1200px;
     min-width: 800px;
     margin: 0px auto;
 `;
+
 const Header = styled(S.DivFlex.withComponent('header'))`
     background-color: pink;
     height: 100px;
 `;
+
 const InputArea = styled(S.DivFlex)`
     flex-direction: row;
     justify-content: space-between;

@@ -8,7 +8,7 @@ const Section = styled(S.DivFlex.withComponent('section'))`
     background-color: aqua;
     display: inline;
 `;
-
+// 넘겨 줘야하는지..?
 function ContentArea({ todoReducer }) {
     return (
         <Section>
