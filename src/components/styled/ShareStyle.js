@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 // import * as S from '../components/styled/ShareStyle';
 /*
@@ -6,6 +6,13 @@ import styled from 'styled-components';
     S.DivFlex 로 사용하면 된다
     여기에 여러개 작성 가능 !!
 */
+export const GlobalStyle = createGlobalStyle`
+  body{
+    padding:0;
+    margin: 0;
+  }
+`;
+
 export const DivFlex = styled.div`
     display: flex;
     flex-direction: column;

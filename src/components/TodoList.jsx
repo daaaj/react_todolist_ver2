@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, doneTodo, cancleTodo } from '../redux/modules/todoModule';
 import * as S from '../components/styled/ShareStyle';
+import { Link } from 'react-router-dom';
 
 const TodoBox = styled(S.DivFlex)`
     width: 200px;
@@ -28,9 +29,15 @@ function TodoList({ list }) {
         dispatch(cancleTodo(list.id));
     };
     const btnNames = ['삭제하기', '완료', '취소'];
+
     return (
+        // 1. 상세보기 클릭 시 상세 페이지 이동 => Link 사용 (백틱 사용!!)
+        // 2. 해당 id 조회해서 todo 가지고 오기 => 상세페이지에서 useParam 이용
+        // 3. 이전으로 버튼 클릭시 home page로 이동
         <TodoBox>
-            <span>상세보기</span>
+            <Link to={`/${list.id}`}>
+                <span>상세보기</span>
+            </Link>
             <span>{list.title}</span>
             <p>{list.content}</p>
             <div>

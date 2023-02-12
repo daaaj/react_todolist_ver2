@@ -1,10 +1,13 @@
 // 이벤트 핸들러 같은 함수들은 다 모듈에다!!
 
 // value
-const ADD = 'todo/ADD';
-const DELETE = 'todo/DELETE';
-const DONE = 'todo/DONE';
-const CANCLE = 'todo/CANCLE';
+// Home
+const ADD = 'home/ADD';
+const DELETE = 'home/DELETE';
+const DONE = 'home/DONE';
+const CANCLE = 'home/CANCLE';
+// TodoPage
+const BACK = 'todo/BACK';
 
 // creator
 export const addTodo = (title, content) => {
@@ -32,6 +35,12 @@ export const cancleTodo = (id) => {
         id,
     };
 };
+export const backPage = (id) => {
+    return {
+        type: BACK,
+        id,
+    };
+};
 
 // list 초기값 줘보자
 const initalState = [
@@ -42,7 +51,7 @@ const initalState = [
         isDone: false,
     },
 ];
-//console.log(`list.id : ${list.id} / action.id : ${action.id}`);
+
 // reducer : 가공하는 공장...9ㅅ9
 // 값 넘어온건 action.@ 으로...
 const todoReducer = (state = initalState, action) => {
@@ -65,6 +74,9 @@ const todoReducer = (state = initalState, action) => {
             return state.map((list) => (list.id === action.id ? { ...list, isDone: true } : list));
         case CANCLE:
             return state.map((list) => (list.id === action.id ? { ...list, isDone: false } : list));
+        case BACK:
+            // param 변경해줘야해
+            return;
         default:
             return state;
     }

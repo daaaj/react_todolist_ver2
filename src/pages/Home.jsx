@@ -6,14 +6,10 @@ import ContentArea from '../components/ContentArea';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../redux/modules/todoModule';
 import * as S from '../components/styled/ShareStyle';
+
 // styled components
 // 전역 global
-const GlobalStyle = createGlobalStyle`
-  body{
-    padding:0;
-    margin: 0;
-  }
-`;
+const GlobalStyle = S.GlobalStyle;
 
 const Container = styled(S.DivFlex)`
     max-width: 1200px;
@@ -33,11 +29,6 @@ const InputArea = styled(S.DivFlex)`
     height: 100px;
     background-color: lightgray;
 `;
-
-/*
-
-
-*/
 
 function Home() {
     // input 값
