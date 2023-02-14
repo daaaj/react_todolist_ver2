@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const LabelBoxArea = styled.div`
     border: 10px solid #f6f6c9;
     min-height: 800px;
+    width: 100%;
     border-radius: 30px;
     height: 100%;
     padding: 30px 0px;

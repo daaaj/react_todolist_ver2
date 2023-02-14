@@ -4,7 +4,7 @@
 
 ---
 
-## 내용
+## 내용 (refactoring 중...)
 
 -   Redux / React-Router-DOM 사용
 -   styled-components 사용

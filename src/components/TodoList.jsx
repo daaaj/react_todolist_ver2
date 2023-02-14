@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button from './comon/Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, doneTodo, cancleTodo } from '../redux/modules/todoModule';
@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 const TodoBox = styled(S.DivFlex)`
     max-width: 300px;
     background-color: #bad1c2;
-    /* color: white; */
     border-radius: 30px;
     font-size: 1.3rem;
     // 줄바꿈...까먹지말자
@@ -76,7 +75,7 @@ function TodoList({ list }) {
                     ? btnNames
                           .filter((item) => item !== '취소')
                           .map((item, i) => {
-                              return <Button key={i} name={item} color={item === '삭제하기' ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
+                              return <Button key={i} name={item} color={i === 0 ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
                           })
                     : btnNames
                           .filter((item) => item !== '완료')

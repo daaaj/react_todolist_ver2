@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import Input from '../components/comon/Input';
+import Button from '../components/comon/Button';
 import ContentArea from '../components/ContentArea';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/modules/todoModule';
@@ -69,9 +69,7 @@ function Home() {
         setContent(e.target.value);
     };
 
-    // 1. useSelector 먼저
-    // const todoReducer = useSelector((state) => state.todoReducer);
-    // 2. dispatch : 값 전달하는 따까리..
+    // dispatch : 값 전달하는 따까리..
     const dispatch = useDispatch();
 
     // 추가 버튼 클릭시
