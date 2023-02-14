@@ -7,10 +7,9 @@ import styled, { createGlobalStyle } from 'styled-components';
     여기에 여러개 작성 가능 !!
 */
 export const GlobalStyle = createGlobalStyle`
-  body{
-    padding:0;
-    margin: 0;
 
+${'' /* 얘가 진짜 전역 */}
+*{
   @font-face {
     font-family: 'UhBeeKang-Ja';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeKang-Ja.woff') format('woff');
@@ -19,6 +18,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   font-family: 'UhBeeKang-Ja';
+}
+
+body{
+    ${'' /* 배경 .....  */}
+    padding:0;
+    margin: 0;
   }
 `;
 

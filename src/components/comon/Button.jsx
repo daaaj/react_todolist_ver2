@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-    font-family: 'UhBeeKang-Ja';
+    //font-family: 'UhBeeKang-Ja';
     border: none;
     border-radius: 20px;
     background-color: ${(props) => props.color};

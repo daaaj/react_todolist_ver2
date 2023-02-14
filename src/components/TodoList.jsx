@@ -45,8 +45,6 @@ const BtnArea = styled(S.DivFlex)`
     }
 `;
 function TodoList({ list }) {
-    // 1. selector 안해도 되는지...? ㅇㅇ
-    // 2. dispatch
     const dispatch = useDispatch();
 
     const deleteTodoList = () => {
@@ -71,16 +69,17 @@ function TodoList({ list }) {
             <Title>{list.title}</Title>
             <Content>{list.content}</Content>
             <BtnArea>
+                {/* 삼항연산자 -> 논리연산자로.. 도오전!*/}
                 {list.isDone === false
                     ? btnNames
                           .filter((item) => item !== '취소')
                           .map((item, i) => {
-                              return <Button key={i} name={item} color={i === 0 ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
+                              return <Button key={i} name={item} color={i === 0 || '#4FA095'} onClick={i === 0 ? deleteTodoList : doneTodoList} />;
                           })
                     : btnNames
                           .filter((item) => item !== '완료')
                           .map((item, i) => {
-                              return <Button key={i} name={item} color={item === '삭제하기' ? '' : '#4FA095'} onClick={i === 0 ? deleteTodoList : cancleTodoLIst} />;
+                              return <Button key={i} name={item} color={i === 0 || '#4FA095'} onClick={i === 0 ? deleteTodoList : cancleTodoLIst} />;
                           })}
             </BtnArea>
         </TodoBox>
